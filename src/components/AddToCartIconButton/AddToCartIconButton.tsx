@@ -1,31 +1,30 @@
-import {ReactElement} from "react";
+"use client"
+
+import {ReactElement, useCallback} from "react";
 import {Product} from "@/types/product";
-import Image from "next/image";
+import {PlusCircleIcon} from "@heroicons/react/24/outline";
 
 
-export interface ProductListProps {
-    products: Product[];
+export interface AddToCartIconButtonProps {
+    className?: string;
+    product: Product;
 }
-const ProductList = ({products}: ProductListProps): ReactElement => {
+const AddToCartIconButton = ({className = '', product}: AddToCartIconButtonProps): ReactElement => {
+    // HANDLERS
+    const handleAddToCart = useCallback(() => {
+        // TODO: Add to cart
+    }, [product]);
+
     return (
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            {products.map((product) => (
-                <a key={product.id} href={`/${product.id}`} className="group">
-                    <div className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                        <Image
-                            src={product.thumbnail}
-                            alt={product.title}
-                            className="h-60 w-full object-cover object-center group-hover:opacity-75"
-                            width={280}
-                            height={320}
-                        />
-                    </div>
-                    <h3 className="mt-4 text-sm text-gray-700">{product.title}</h3>
-                    <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-                </a>
-            ))}
-        </div>
+        <button
+            type="button"
+            className={`${className} p-3 -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-white`}
+            onClick={handleAddToCart}
+        >
+            <span className="sr-only">Add to cart</span>
+            <PlusCircleIcon className="h-6 w-6" aria-hidden="true" />
+        </button>
     );
 }
 
-export default ProductList;
+export default AddToCartIconButton;

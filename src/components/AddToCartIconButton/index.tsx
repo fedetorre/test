@@ -1,4 +1,4 @@
-import ProductList, {ProductListProps} from "@/components/ProductList/ProductList";
+import AddToCartIconButton, {AddToCartIconButtonProps} from "@/components/AddToCartIconButton/AddToCartIconButton";
 
-export default ProductList;
-export type {ProductListProps};
+export default AddToCartIconButton;
+export type {AddToCartIconButtonProps};

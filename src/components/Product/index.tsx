@@ -1,4 +1,4 @@
-import ProductList, {ProductListProps} from "@/components/ProductList/ProductList";
+import Product, {ProductProps} from "@/components/Product/Product";
 
-export default ProductList;
-export type {ProductListProps};
+export default Product;
+export type {ProductProps};
