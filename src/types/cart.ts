@@ -1,5 +1,5 @@
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 
-export interface CartProductType extends Product {
+export interface CartProductType extends ProductType {
     quantity: number;
 }

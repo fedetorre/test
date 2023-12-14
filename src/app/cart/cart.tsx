@@ -2,10 +2,9 @@
 
 import {ReactElement, useCallback, useMemo} from "react";
 import useEcommerce from "@/hooks/useEcommerce";
-import AddToCartIconButton from "@/components/AddToCartIconButton";
 import Image from "next/image";
 import {CartProductType} from "@/types/cart";
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 import Link from "next/link";
 
 export interface CartProps {
@@ -17,7 +16,7 @@ const Cart = ({className = ''}: CartProps): ReactElement => {
     const {state, handleRemoveFromCart} = useEcommerce();
 
     // MEMO
-    const products: CartProductType[] = useMemo(() => Object.values(state.items.reduce((acc, value: Product) => {
+    const products: CartProductType[] = useMemo(() => Object.values(state.items.reduce((acc, value: ProductType) => {
         if (acc[value.id]) {
             acc[value.id].quantity +=1;
         } else {

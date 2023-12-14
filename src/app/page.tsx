@@ -1,9 +1,9 @@
 import ProductList from "@/components/ProductList";
 import Ecommerce from "@/api/Ecommerce";
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 
 export default async function HomePage() {
-    let products: Product[] = [];
+    let products: ProductType[] = [];
     try {
         products = await Ecommerce.Product.list();
     } catch (e) {

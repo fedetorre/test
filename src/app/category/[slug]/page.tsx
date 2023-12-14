@@ -1,6 +1,6 @@
 import ProductList from "@/components/ProductList";
 import Ecommerce from "@/api/Ecommerce";
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 
 
 export interface CategoryPageProps {
@@ -9,7 +9,7 @@ export interface CategoryPageProps {
     }
 }
 export default async function CategoryPage({ params }: CategoryPageProps) {
-    let products: Product[] = [];
+    let products: ProductType[] = [];
     try {
         products = await Ecommerce.Category.products({category: params.slug});
     } catch (e) {

@@ -1,6 +1,6 @@
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 
-const list = async (): Promise<Product[]> => {
+const list = async (): Promise<ProductType[]> => {
     const response = await fetch('https://dummyjson.com/products', {next: { revalidate: 3600, tags: ['product_list', 'all'] }});
     if (!response.ok) {
         throw {'error': 'Error fetching products'}
@@ -11,7 +11,7 @@ const list = async (): Promise<Product[]> => {
 export interface ProductGetParams {
     id: string;
 }
-const get = async ({id}: ProductGetParams): Promise<Product> => {
+const get = async ({id}: ProductGetParams): Promise<ProductType> => {
     const response = await fetch(`https://dummyjson.com/products/${id}`, {next: { revalidate: 3600, tags: [`product_${id}`, 'all'] }});
     if (!response.ok) {
         throw {'error': 'Error fetching products'}

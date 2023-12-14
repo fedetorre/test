@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 import Image from "next/image";
 import AddToCartIconButton from "@/components/AddToCartIconButton";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export interface ProductListProps {
     className?: string;
-    products: Product[];
+    products: ProductType[];
 }
 const ProductList = ({className = '', products}: ProductListProps): ReactElement => {
     return (

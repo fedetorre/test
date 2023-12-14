@@ -1,6 +1,6 @@
 import ProductComponent from "@/components/Product";
 import Ecommerce from "@/api/Ecommerce";
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 import {notFound} from "next/navigation";
 
 
@@ -10,7 +10,7 @@ export interface ProductPageProps {
     }
 }
 export default async function ProductPage({ params }: ProductPageProps) {
-    let product: Product | null = null;
+    let product: ProductType | null = null;
     try {
         product = await Ecommerce.Product.get({id: params.id});
     } catch (e) {

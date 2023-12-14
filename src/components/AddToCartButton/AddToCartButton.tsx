@@ -1,14 +1,14 @@
 "use client"
 
 import {ReactElement, useCallback} from "react";
-import {Product} from "@/types/product";
+import {ProductType} from "@/types/product";
 import {PlusCircleIcon} from "@heroicons/react/24/outline";
 import useEcommerce from "@/hooks/useEcommerce";
 
 
 export interface AddToCartButtonProps {
     className?: string;
-    product: Product;
+    product: ProductType;
 }
 const AddToCartButton = ({className = '', product}: AddToCartButtonProps): ReactElement => {
     const {handleAddToCart: dispatchAddToCart} = useEcommerce();
@@ -16,7 +16,7 @@ const AddToCartButton = ({className = '', product}: AddToCartButtonProps): React
     // HANDLERS
     const handleAddToCart = useCallback(() => {
         dispatchAddToCart(product);
-    }, [product]);
+    }, [product, dispatchAddToCart]);
 
     return (
         <button

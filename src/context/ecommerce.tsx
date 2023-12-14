@@ -1,10 +1,10 @@
 "use client"
 
-import { Product } from "@/types/product";
+import { ProductType } from "@/types/product";
 import {createContext, Dispatch, ReactNode, useReducer} from "react";
 
 export interface EcommerceContextProps {
-  items: Product[];
+  items: ProductType[];
 };
 
 export const initialState: EcommerceContextProps = {
