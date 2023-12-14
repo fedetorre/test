@@ -3,6 +3,7 @@
 import {ReactElement, useCallback} from "react";
 import {Product} from "@/types/product";
 import {PlusCircleIcon} from "@heroicons/react/24/outline";
+import useEcommerce from "@/hooks/useEcommerce";
 
 
 export interface AddToCartButtonProps {
@@ -10,9 +11,11 @@ export interface AddToCartButtonProps {
     product: Product;
 }
 const AddToCartButton = ({className = '', product}: AddToCartButtonProps): ReactElement => {
+    const {handleAddToCart: dispatchAddToCart} = useEcommerce();
+
     // HANDLERS
     const handleAddToCart = useCallback(() => {
-        // TODO: Add to cart
+        dispatchAddToCart(product);
     }, [product]);
 
     return (

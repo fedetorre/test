@@ -6,15 +6,18 @@ import {Bars3Icon, ShoppingBagIcon, XMarkIcon} from '@heroicons/react/24/outline
 import {Fragment, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import useEcommerce from "@/hooks/useEcommerce";
 
 export interface NavbarProps {
   categories: string[]
 }
 
 export default function Navbar({categories}: NavbarProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const pathname = usePathname();
+  // STATE
+  const [menuOpen, setMenuOpen] = useState(false);
+  
+  // HOOKS
+  const {state} = useEcommerce();
 
   return (
     <header className={`inset-x-0 top-0 z-50 w-full fixed bg-white`}>
@@ -26,13 +29,14 @@ export default function Navbar({categories}: NavbarProps) {
           </a>
         </div>
         <div className="flex">
-          <Link href="/cart" className="p-3">
+          <Link href="/cart" className="p-3 relative">
             <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
+            {state.items.length > 0 ? <span className="absolute top-0 right-0 inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">{state.items.length}</span> : null}
           </Link>
           <button
             type="button"
             className="p-3 -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-white"
-            onClick={() => setMobileMenuOpen(true)}
+            onClick={() => setMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -40,7 +44,7 @@ export default function Navbar({categories}: NavbarProps) {
         </div>
       </nav>
       <Transition
-          show={mobileMenuOpen}
+          show={menuOpen}
           enter="transition duration-200 ease-out"
           enterFrom="transform opacity-0"
           enterTo="transform opacity-100"
@@ -49,7 +53,7 @@ export default function Navbar({categories}: NavbarProps) {
           leaveTo="transform opacity-0"
           as="div"
       >
-        <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <Dialog as="div" open={menuOpen} onClose={setMenuOpen}>
           <div className="fixed inset-0 z-50" />
           <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
@@ -66,7 +70,7 @@ export default function Navbar({categories}: NavbarProps) {
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => setMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
