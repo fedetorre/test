@@ -28,7 +28,7 @@ const ProductList = ({className = '', products}: ProductListProps): ReactElement
                         </a>
                     </h3>
                     <p className="mt-1 text-lg font-medium text-gray-900 relative pr-8">
-                        {product.price}
+                        €{product.price}
                         <AddToCartIconButton product={product} className="absolute right-0"/>
                     </p>
                 </div>
