@@ -6,6 +6,7 @@ import AddToCartIconButton from "@/components/AddToCartIconButton";
 import Image from "next/image";
 import {CartProductType} from "@/types/cart";
 import {Product} from "@/types/product";
+import Link from "next/link";
 
 export interface CartProps {
     className?: string;
@@ -55,7 +56,7 @@ const Cart = ({className = ''}: CartProps): ReactElement => {
                                 <div>
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                         <h3>
-                                            <a href={`/${product.id}`}>{product.title}</a>
+                                            <Link href={`/${product.id}`}>{product.title}</Link>
                                         </h3>
                                         <p className="ml-4">{product.price}</p>
                                     </div>
@@ -96,13 +97,13 @@ const Cart = ({className = ''}: CartProps): ReactElement => {
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                     <p>
                         or
-                        <a
+                        <Link
                             href="/"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
                         >
                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

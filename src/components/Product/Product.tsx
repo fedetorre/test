@@ -5,6 +5,7 @@ import AddToCartIconButton from "@/components/AddToCartIconButton";
 import {StarIcon} from "@heroicons/react/24/outline";
 import {classNames} from "@/utils";
 import AddToCartButton from "@/components/AddToCartButton";
+import Link from "next/link";
 
 
 export interface ProductProps {
@@ -19,9 +20,9 @@ const Product = ({className = '', product}: ProductProps): ReactElement => {
                     <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                         <li>
                             <div className="flex items-center">
-                                <a href={`/category/${product.category}`} className="mr-2 text-sm font-medium text-gray-900">
+                                <Link href={`/category/${product.category}`} className="mr-2 text-sm font-medium text-gray-900">
                                     {product.category}
-                                </a>
+                                </Link>
                                 <svg
                                     width={16}
                                     height={20}
@@ -35,9 +36,9 @@ const Product = ({className = '', product}: ProductProps): ReactElement => {
                             </div>
                         </li>
                         <li className="text-sm">
-                            <a href={`/${product.id}`} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
+                            <Link href={`/${product.id}`} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
                                 {product.title}
-                            </a>
+                            </Link>
                         </li>
                     </ol>
                 </nav>

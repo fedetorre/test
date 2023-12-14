@@ -2,6 +2,7 @@ import {ReactElement} from "react";
 import {Product} from "@/types/product";
 import Image from "next/image";
 import AddToCartIconButton from "@/components/AddToCartIconButton";
+import Link from "next/link";
 
 
 export interface ProductListProps {
@@ -13,7 +14,7 @@ const ProductList = ({className = '', products}: ProductListProps): ReactElement
         <div className={`${className} grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8`}>
             {products.map((product) => (
                 <div key={product.id} className="group">
-                    <a href={`/${product.id}`} className="block relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                    <Link href={`/${product.id}`} className="block relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                         <Image
                             src={product.thumbnail}
                             alt={product.title}
@@ -21,11 +22,11 @@ const ProductList = ({className = '', products}: ProductListProps): ReactElement
                             width={280}
                             height={320}
                         />
-                    </a>
+                    </Link>
                     <h3 className="mt-4 text-sm text-gray-700">
-                        <a href={`/${product.id}`}>
+                        <Link href={`/${product.id}`}>
                             {product.title}
-                        </a>
+                        </Link>
                     </h3>
                     <p className="mt-1 text-lg font-medium text-gray-900 relative pr-8">
                         €{product.price}
