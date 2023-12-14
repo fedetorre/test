@@ -1,5 +1,13 @@
 import Cart from "@/app/cart/cart";
-import ProductList from "@/components/ProductList";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Cart',
+    description: 'Cart checkout',
+    robots: {
+        index: false
+    }
+}
 
 export default async function CartPage() {
 

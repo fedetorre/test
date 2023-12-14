@@ -1,6 +1,6 @@
 "use client"
 
-import {ReactElement, useCallback, useMemo} from "react";
+import {ReactElement, useMemo} from "react";
 import useEcommerce from "@/hooks/useEcommerce";
 import Image from "next/image";
 import {CartProductType} from "@/types/cart";
@@ -13,7 +13,7 @@ export interface CartProps {
 
 const Cart = ({className = ''}: CartProps): ReactElement => {
     // HOOKS
-    const {state, handleRemoveFromCart} = useEcommerce();
+    const {state, handleRemoveFromCart, handleCheckout} = useEcommerce();
 
     // MEMO
     const products: CartProductType[] = useMemo(() => Object.values(state.items.reduce((acc, value: ProductType) => {
@@ -26,9 +26,6 @@ const Cart = ({className = ''}: CartProps): ReactElement => {
     }, {} as Record<string, CartProductType>)), [state.items]);
 
     const total = useMemo(() => products.reduce((acc, product) => acc + product.quantity * product.price, 0), [products]);
-
-    // HANDLERS
-    const handleCheckout = useCallback(() => alert('CHECKOUT'), []);
 
     if (products.length === 0) {
         return <p className={`${className} mt-1 text-lg font-medium text-gray-900 relative pr-8`}>

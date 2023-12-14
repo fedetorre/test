@@ -8,8 +8,12 @@ import NextTopLoader from 'nextjs-toploader';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ECOMMERCE',
-  description: 'Ecommerce APP test',
+    title: {
+        template: '%s | ECOMMERCE',
+        default: 'ECOMMERCE'
+    },
+    description: 'Ecommerce APP test',
+    metadataBase: new URL('https://ecommerce-umber-delta.vercel.app'),
 }
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

@@ -1,6 +1,8 @@
 import ProductList from "@/components/ProductList";
 import Ecommerce from "@/api/Ecommerce";
 import {ProductType} from "@/types/product";
+import {Metadata} from "next";
+import {ProductPageProps} from "@/app/[id]/page";
 
 
 export interface CategoryPageProps {
@@ -8,6 +10,15 @@ export interface CategoryPageProps {
         slug: string;
     }
 }
+
+export async function generateMetadata(
+    { params }: CategoryPageProps
+): Promise<Metadata> {
+    return {
+        title: params.slug
+    }
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
     let products: ProductType[] = [];
     try {
