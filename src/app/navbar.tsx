@@ -3,7 +3,7 @@
 import {usePathname} from 'next/navigation';
 import {Dialog, Transition} from '@headlessui/react';
 import {Bars3Icon, ShoppingBagIcon, XMarkIcon} from '@heroicons/react/24/outline';
-import {Fragment, useState} from 'react';
+import {useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useEcommerce from "@/hooks/useEcommerce";
@@ -18,6 +18,12 @@ export default function Navbar({categories}: NavbarProps) {
   
   // HOOKS
   const {state} = useEcommerce();
+  const pathname = usePathname();
+
+  // EFFECTS
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname]);
 
   return (
     <header className={`inset-x-0 top-0 z-50 w-full fixed bg-white`}>
